@@ -1,6 +1,7 @@
 "Llama al archivo de Plugins
 so ~/.config/nvim/plugins.vim
-
+"LLama al tema de airline
+source $HOME/.config/nvim/themes/airline.vim
 
 " Luego de esta línea puedes agregar tus configuraciones y mappings
 

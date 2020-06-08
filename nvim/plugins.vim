@@ -11,6 +11,9 @@ Plug 'honza/vim-snippets'
 Plug 'https://github.com/scrooloose/nerdtree'
 "Plug 'cormacrelf/vim-colors-github'
 Plug 'joshdick/onedark.vim'
+"AirLine
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 
 
