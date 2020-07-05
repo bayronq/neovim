@@ -1,22 +1,29 @@
-"Llama al archivo de Plugins
-so ~/.config/nvim/plugins.vim
 "LLama al tema de airline
 source $HOME/.config/nvim/themes/airline.vim
 
+
+"Directorio de plugins
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'VundleVim/Vundle.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
+"=========================================
+
 " Luego de esta línea puedes agregar tus configuraciones y mappings
-
-"Configuraciones
-
-"Tema
-"colorscheme onedark  " Activa tema onedark
-
 
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
 " Abrir/cerrar NERDTree con Ctrl+n
-" Keymaps
-" =====================================
-" Abrir NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
 " Abrir terminal
