@@ -1,9 +1,8 @@
 "LLama al tema de airline
 source $HOME/.config/nvim/themes/airline.vim
-source $HOME/.config/nvim/themes/onedark.vim
+"source $HOME/.config/nvim/themes/onedark.vim
 
-
-"Directorio de plugins
+"------------------- Plugins (VimPlug) -------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'VundleVim/Vundle.vim'
@@ -12,6 +11,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'vim-scripts/fountain.vim'
 "Apariencia
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
@@ -19,17 +19,17 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
-"=========================================
-
-" Luego de esta línea puedes agregar tus configuraciones y mappings
+"==================== Configuraciones Generales ============================
 
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
 " Abrir/cerrar NERDTree con Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
-
 " Abrir terminal
 map <F2> :belowright terminal<CR>
+"Recargar configuraciones de neovim con Control+s
+map <C-s> :source ~/.config/nvim/init.vim <CR>
+
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -38,10 +38,14 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Appearance {{{
+    set encoding=UTF-8
+    syntax on
+    set autoread 
     set number " show line numbers
     set nu rnu  "ver la linea donde estamos
     set wrap " turn on line wrapping
     set wrapmargin=8 " wrap lines when coming within n characters from side
+    set cursorline
     set linebreak " set soft wrapping
     set showbreak=↪
     set autoindent " automatically set indent of new line
@@ -63,6 +67,12 @@ nnoremap <C-H> <C-W><C-H>
     set signcolumn=yes
     set shortmess+=c
 
+" Status Line (muestra el directorio y archivo actual editando)
+    set statusline=
+    set statusline+=\ %M
+    set statusline+=\ %y
+    set statusline+=\ %r
+    set statusline+=\ %F
 
     " Colorscheme and final setup {{{
     " This call must happen after the plug#end() call to ensure
@@ -91,4 +101,3 @@ nnoremap <C-H> <C-W><C-H>
 
 " vim:set foldmethod=marker foldlevel=0
 
-    
