@@ -1,5 +1,6 @@
 "LLama al tema de airline
 source $HOME/.config/nvim/themes/airline.vim
+source $HOME/.config/nvim/themes/onedark.vim
 
 
 "Directorio de plugins
@@ -11,6 +12,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'https://github.com/scrooloose/nerdtree'
+"Apariencia
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -37,6 +39,7 @@ nnoremap <C-H> <C-W><C-H>
 
 " Appearance {{{
     set number " show line numbers
+    set nu rnu  "ver la linea donde estamos
     set wrap " turn on line wrapping
     set wrapmargin=8 " wrap lines when coming within n characters from side
     set linebreak " set soft wrapping
