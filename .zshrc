@@ -100,6 +100,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias vim="nvim"
+alias v="nvim"
 alias recarga='source ~/.zshrc'
 alias servicios='sudo systemctl list-unit-files --state=enabled'
