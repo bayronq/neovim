@@ -98,8 +98,12 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias mirrorlist="sudo reflector --verbose -l 6 --sort rate --save /ete/pacman.d/mirrorlist"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias v="nvim"
-alias recarga='source ~/.zshrc'
+alias recargar='source ~/.zshrc'
 alias servicios='sudo systemctl list-unit-files --state=enabled'
+alias peso='du -sh * .[A-z0-9]* | sort -n'
+alias cat="bat"
+alias catn="/etc/bin/cat"
