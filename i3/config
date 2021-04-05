@@ -37,7 +37,7 @@ bindsym $mod+Shift+Escape	       exec --no-startup-id $hibernate
 
 
 #font pango:monospace 8
-font pango:Noto Sans 11
+font pango:UbuntuMono Nerd Font 11
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -61,7 +61,7 @@ bindsym $mod+space 			            exec --no-startup-id rofi-menu
 
 
 # #---Letter Key Bindings---# #
-bindsym $mod+q			            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym Mod1+q			            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 bindsym $mod+Shift+q		        [con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
 
 # w
@@ -216,9 +216,9 @@ bindsym $mod+Shift+slash	      kill
 bindsym $mod+backslash		      workspace back_and_forth
 
 
-set $ws1 "1: "
+set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
+set $ws3 "3: "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
