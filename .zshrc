@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/bayronq/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
 export JAVA_HOME=/usr/java/jdk
 export PATH=$JAVA_HOME/bin:$PATH
 
@@ -72,8 +72,10 @@ ZSH_THEME="random"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source $ZSH/oh-my-zsh.sh
+#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/oh-my-zsh/oh-my-zsh.sh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
