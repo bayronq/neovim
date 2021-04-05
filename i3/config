@@ -1,9 +1,11 @@
 
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# i3 config file bayron cua
 
 exec_always --no-startup-id autotiling
+exec_always /home/bayronq/.config/i3/wallpaper.sh
+exec picom -b -f
+exec dunst
+exec_always nm-applet
 
 #----Definiciones Basicas----
 smart_gaps on
@@ -18,9 +20,13 @@ set $reboot sudo -A reboot
 set $lock i3lock
 set $suspend sudo systemctl suspend
 set $hibernate sudo -A systemctl hibernate
+set $bg "#444477"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
 
 # ---Gaps----
 for_window [class="^.*"] border pixel 3 
@@ -35,97 +41,43 @@ bindsym $mod+Shift+Return	       exec $term --working-directory  $(xcwd)
 bindsym $mod+Escape	             exec --no-startup-id dm-tool switch-to-greeter
 bindsym $mod+Shift+Escape	       exec --no-startup-id $hibernate
 
-
 #font pango:monospace 8
 font pango:UbuntuMono Nerd Font 11
-
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-
-# brillantor
-bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +2%
 
 # captura
 #bindsym Print exec spectacle
 bindsym Print exec gnome-screenshot -i
 
-# bindsym $mod+BackSpace
-# bindsym $mod+Shift+BackSpace	   exec --no-startup-id prompt "Reboot computer?" $reboot
-
 # space
-bindsym $mod+space 			            exec --no-startup-id rofi-menu 
+bindsym $alt+space 			            exec --no-startup-id rofi-menu 
 
-
-# #---Letter Key Bindings---# #
-bindsym Mod1+q			            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
-bindsym $mod+Shift+q		        [con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
-
-# w
-bindsym $mod+w 			            exec --no-startup-id brave
-
-# c
-#bindsym $mod+c 			            exec --no-startup-id lock
-#bindsym $mod+Shift+c		        exec --no-startup-id $suspend
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# e
-#bindsym $mod+e 			            exec --no-startup-id code-insiders -n
-#bindsym $mod+Shift+e		        exec $term -e code-insiders
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+e layout toggle split
-
-# r
-bindsym $mod+r 			            exec $term -e ranger
-#bindsym $mod+Shift+r		        exec --no-startup-id winresize
-
-# t
-bindsym $mod+t 			            exec $term -e ytop
-bindsym $mod+Shift+t            focus mode_toggle
-
-# y
-bindsym $mod+y			            exec --no-startup-id flameshot gui -p ~/Pics/screenshots
-bindsym $mod+Shift+y		        exec --no-startup-id flameshot full -p ~/Pics/screenshots
-
-# u
-bindsym $mod+u                  [urgent=latest] focus
-
-# i
-bindsym $mod+i                  fullscreen disable; floating enable; resize set 300 200; sticky enable; move position 4792 53
-
-# o
-bindsym $mod+o			            exec --no-startup-id $term -e nvim ~/Repos/blog/content
-# bindsym $mod+Shift			        exec --no-startup-id $term -e nvim ~/Repos
 
 # a
-#bindsym $mod+a		              exec $term -e alsamixer
 # focus the parent container
 bindsym $mod+a focus parent
-#hide_edge_borders both
 bindsym $mod+Shift+a gaps inner all minus 2; gaps outer all minus 2;
 
+# b
+bindsym $mod+b			            exec --no-startup-id feh --bg-fill --randomize ~/Pics/wallpapers/*
 
-# s
-#bindsym $mod+s        			    sticky toggle;
-bindsym $mod+Shift+s			    split toggle
-#bindsym $mod+Shift+s                sticky toggle
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# c
+# reload the configuration file
+bindsym $mod+Shift+c reload
 
 # d
 #bindsym $mod+d                  exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -b -i'
 bindsym $mod+d exec rofi -theme .config/i3/material -font "Cantarell 12" -show run
 
+
+# e
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+e layout toggle split
+
 # f
 # enter fullscreen mode for the focused container
 bindsym $mod+f			            fullscreen toggle
 bindsym $mod+Shift+f 	          floating toggle
-
 
 # g
 bindsym $mod+g		              gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
@@ -138,6 +90,9 @@ bindsym $mod+Shift+h		        move left 30
 bindsym $mod+Ctrl+h		          move workspace to output left
 # split in horizontal orientation
 bindsym Mod1+h                      split h
+
+# i
+bindsym $mod+i                  fullscreen disable; floating enable; resize set 300 200; sticky enable; move position 4792 53
 
 # j
 bindsym $mod+j			            focus down
@@ -155,60 +110,77 @@ bindsym $mod+Shift+l		        move right 30
 bindsym $mod+Ctrl+l		          move workspace to output right
 # per bloquejar sa pantalla
 bindsym $mod+mod1+l                 exec dm-tool lock
-
 bindsym $mod+semicolon 			    exec --no-startup-id skippy-xd
 
-# z
-bindsym $mod+z			            exec --no-startup-id $term -e nvim ~/.zshrc
+# m
+bindsym $mod+m		              exec --no-startup-id spotify
+bindsym $mod+Shift+m		        exec --no-startup-id discord
 
-# x
-bindsym $mod+x 			            exec --no-startup-id $reboot
-bindsym $mod+Shift+x		        exec --no-startup-id $shutdown
+# n
+bindsym $mod+n			            exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
+
+# o
+bindsym $mod+o			            exec --no-startup-id $term -e nvim ~/Repos/blog/content
+# bindsym $mod+Shift			        exec --no-startup-id $term -e nvim ~/Repos
 
 # p
 bindsym $mod+p			            exec --no-startup-id picom -b
-#bindsym $mod+Shift+p		        exec --no-startup-id killall picom
-bindsym $mod+shift+p exec rofi -theme .config/i3/material -font "Cantarell 12" -show window
+bindsym $mod+Shift+p		        exec --no-startup-id killall picom
+
+# q
+# kill focused window
+bindsym Mod1+q			            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+Shift+q		        [con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
+
+# r
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+#bindsym $mod+Shift+r		        exec --no-startup-id winresize
+bindsym $mod+Shift+r    			restart
+bindsym $mod+r 			            exec $term -e ranger
+
+# s
+#bindsym $mod+s        			    sticky toggle;
+bindsym $mod+Shift+s			    split toggle
+#bindsym $mod+Shift+s                sticky toggle
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+
+# t
+bindsym $mod+t 			            exec $term -e ytop
+bindsym $mod+Shift+t            focus mode_toggle
+
+# u
+bindsym $mod+u                  [urgent=latest] focus
 
 # v
 bindsym $mod+v			            exec --no-startup-id mpv /dev/video0
 # split in vertical orientation
 bindsym Mod1+v split v
 
-# b
-bindsym $mod+b			            exec --no-startup-id feh --bg-fill --randomize ~/Pics/wallpapers/*
+# w
+bindsym $mod+w 			            exec --no-startup-id chrome 
 
-# n
-bindsym $mod+n			            exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
+# x
+bindsym $mod+x 			            exec --no-startup-id $reboot
+bindsym $mod+Shift+x		        exec --no-startup-id $shutdown
 
-# m
-bindsym $mod+m		              exec --no-startup-id spotify
-bindsym $mod+Shift+m		        exec --no-startup-id discord
+# y
+bindsym $mod+y			            exec --no-startup-id flameshot gui -p ~/Pics/screenshots
+bindsym $mod+Shift+y		        exec --no-startup-id flameshot full -p ~/Pics/screenshots
 
-# kill focused window
-bindsym Mod1+Shift+q kill
+# z
+bindsym $mod+z			            exec --no-startup-id $term -e nvim ~/.zshrc
 
+# #---Function Buttons---# #
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-set $bg "#444477"
-
+#bindsym $mod+F2		        exec --no-startup-id screenkey -s small --scr 1 -p fixed -g 600x100+2573+1330 --opacity .9 --font-color white
 bindsym $mod+F2 exec dmenu_run -i -fn "Cantarell-14" -nf '#ffb52a' -sb '#ffb52a' -sf '#222'
-
-# monitos
-#bindsym $mod+p exec /home/gerry/.config/i3/monitors.sh
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
+bindsym $mod+F3	          exec --no-startup-id killall screenkey
+bindsym $mod+F12	        exec $term -e nmtui
+bindsym $mod+F1		        restart
 
 # #---Workspace Bindings---# #
-bindsym $mod+Tab		            exec --no-startup-id rofi-menu-windows
+bindsym $mod+Tab		          workspace next
 bindsym $mod+Shift+Tab		      workspace next
 bindsym $mod+apostrophe		      split horizontal ;; exec $term
 bindsym $mod+slash		          split vertical ;; exec $term
@@ -227,11 +199,11 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "0: "
 
+
 # Assign Workspaces:
 assign [class="thunar"] $ws3
 assign [class="Firefox"] $ws2
-for_window [class="Spotify"] move to workspace $ws9
-#assign [class="^Spotify*"] $ws10
+
 
 # Assing autofloat
 for_window [title=".*Emulator.*"] floating enable
@@ -261,29 +233,23 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 
-# #---Function Buttons---# #
-#bindsym $mod+F2		        exec --no-startup-id screenkey -s small --scr 1 -p fixed -g 600x100+2573+1330 --opacity .9 --font-color white
-bindsym $mod+F3	          exec --no-startup-id killall screenkey
-bindsym $mod+F12	        exec $term -e nmtui
-
-
 # #---Arrow Keys---# #
 bindsym $mod+Left		      focus left
-bindsym $mod+Shift+Left   resize shrink width 5 px or 5 ppt
-bindsym $mod+Ctrl+Left		move workspace to output right
+bindsym $mod+Shift+Left       resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Left		  move workspace to output right
 bindsym $mod+Down		      focus down
-bindsym $mod+Shift+Down   resize shrink height 5 px or 5 ppt
-bindsym $mod+Ctrl+Down		move workspace to output up
+bindsym $mod+Shift+Down       resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Down		  move workspace to output up
 bindsym $mod+Up			      focus up
-bindsym $mod+Shift+Up     resize grow height 5 px or 5 ppt
+bindsym $mod+Shift+Up         resize grow height 5 px or 5 ppt
 bindsym $mod+Ctrl+Up		  move workspace to output down
-bindsym $mod+Right 		    focus right
-bindsym $mod+Shift+Right  resize grow width 5 px or 5 ppt
-bindsym $mod+Ctrl+Right		move workspace to output left
+bindsym $mod+Right 		      focus right
+bindsym $mod+Shift+Right      resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+Right		  move workspace to output left
 
 
 # Window borders
-#client.focused          #4c7899 #285577 #ffffff #2e9ef4   #abb2bf
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #abb2bf
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -291,16 +257,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 
-#switch workspace
-#bindsym $mod+Tab workspace next
-#bindsym $mod+Shift+Tab workspace prev
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r    restart
-
-
 # Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
 	position top
     #i3bar_command i3bar -t
@@ -310,15 +267,37 @@ bar {
 		#background #222222ff
         background #222222
 		statusline #eeeeee
-		separator #666666
-           	#                  border  backgr. text
-		focused_workspace  #444444 #444444 #ffb52a                  
+		separator  #666666
+           	#                  	border  backgr. text
+		focused_workspace  		#444444 #444444 #ffb52a                  
 	}
 }
 
-client.focused #bf7500 #bf7500 #bf7500 #ffe570
 
-exec_always /home/bayronq/.config/i3/wallpaper.sh
-exec picom -b -f
-exec dunst
-exec_always nm-applet
+
+# monitos
+#bindsym $mod+p exec /home/gerry/.config/i3/monitors.sh
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+#switch workspace
+#bindsym $mod+Tab workspace next
+#bindsym $mod+Shift+Tab workspace prev
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+
+# brillantor
+#bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set +2%
+
+# bindsym $mod+Shift+BackSpace	   exec --no-startup-id prompt "Reboot computer?" $reboot
+
+# Pulse Audio controls
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% #decrease sound volume
+#bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+
+
