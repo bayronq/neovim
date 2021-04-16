@@ -10,7 +10,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+#ZSH_THEME="random"
+ZSH_THEME="jaischeema"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -101,11 +102,34 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # Example aliases
 alias mirrorlist="sudo reflector --verbose -l 6 --sort rate --save /ete/pacman.d/mirrorlist"
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias v="nvim"
 alias recargar='source ~/.zshrc'
 alias servicios='sudo systemctl list-unit-files --state=enabled'
 alias peso='du -sh * .[A-z0-9]* | sort -n'
 alias cat="bat"
 alias catn="/etc/bin/cat"
+
+
+# Funciones
+extract (){
+	if [ -f $1 ]; then
+		case $1 in
+			*.tar.bz2)	tar xvjf $1 ;;
+			*.tar.gz)	tar xvzf $1 ;;
+			*.bz2)		bunzip2 $1 ;;
+			*.rar)      	rar x $1 ;;
+			*.gz)	   	gunzip $1 ;;
+			*.tar)		tar xvf $1 ;;
+			*.tbz2)		tar xvjf $1;;
+			*.tgz)		tar xvzf $1 ;;
+			*.zip)		unzip $1 ;;
+			*.Z)		uncompress $1 ;;
+			*.7z)		7z x $1 ;;
+			*)	echo "No se reconoce el tipo de archivo '$1'...";;
+		esac
+	else
+		echo "'$1' el archivo no es valido!"
+	fi
+}
