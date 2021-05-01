@@ -2,20 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/usr/share/oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export JAVA_HOME=/usr/java/jdk
 export PATH=$JAVA_HOME/bin:$PATH
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="random"
-ZSH_THEME="jaischeema"
+ZSH_THEME="random"
+ZSH_THEME="alanpeabody"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -71,12 +65,12 @@ ZSH_THEME="jaischeema"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#plugins=(git)
 
-#source $ZSH/oh-my-zsh.sh
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/oh-my-zsh/oh-my-zsh.sh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH/oh-my-zsh.sh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/oh-my-zsh/oh-my-zsh.sh
+#source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
@@ -86,11 +80,11 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='nvim'
+ else
+   export EDITOR='nvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -102,14 +96,38 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # Example aliases
 alias mirrorlist="sudo reflector --verbose -l 6 --sort rate --save /ete/pacman.d/mirrorlist"
-alias zconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias z="nvim ~/.zshrc"
 alias v="nvim"
-alias recargar='source ~/.zshrc'
+alias rz='source ~/.zshrc'
 alias servicios='sudo systemctl list-unit-files --state=enabled'
 alias peso='du -sh * .[A-z0-9]* | sort -n'
 alias cat="bat"
-alias catn="/etc/bin/cat"
+alias catn="/bin/cat"
+alias s="v ~/.config/sxhkd/sxhkdrc"
+alias b="v ~/.config/bspwm/bspwmrc"
+alias rm="rm -rf"
+alias w="wal -q -i ~/Descargas/"
+alias reloj="tty-clock -c -C 4"
+
+# pacman and yay
+alias pacsyu='sudo pacman -Syyu'                 # update only standard pkgs
+alias yaysyu='yay -Syu --noconfirm'              # update standard pkgs and AUR pkgs (yay)
+alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
+alias cleanup='sudo pacman -Rns (pacman -Qtdq)'  # remove orphaned packages
+
+# git
+alias addup='git add -u'
+alias add='git add .'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias stat='git status'  # 'status' is protected name so using 'stat' instead
+alias tag='git tag'
+alias newtag='git tag -a'
 
 
 # Funciones

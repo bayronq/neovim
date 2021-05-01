@@ -8,7 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'VundleVim/Vundle.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'vim-scripts/fountain.vim'
@@ -16,6 +16,7 @@ Plug 'vim-scripts/fountain.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'dylanaraps/wal.vim'
 
 call plug#end()
 
@@ -83,7 +84,8 @@ nnoremap <C-H> <C-W><C-H>
     else
         let g:onedark_termcolors=16
         let g:onedark_terminal_italics=1
-        colorscheme onedark
+        "colorscheme onedark
+	colorscheme wal
     endif
     syntax on
     filetype plugin indent on
