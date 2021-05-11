@@ -8,7 +8,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="random"
-ZSH_THEME="alanpeabody"
+#ZSH_THEME="alanpeabody"
 
 
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -37,8 +37,10 @@ alias servicios='sudo systemctl list-unit-files --state=enabled'
 alias peso='du -sh * .[A-z0-9]* | sort -n'
 alias cat="bat"
 alias catn="/bin/cat"
-alias s="v ~/.config/sxhkd/sxhkdrc"
-alias b="v ~/.config/bspwm/bspwmrc"
+alias v="nvim"
+alias z="nvim ~/.zshrc"
+alias s="nvim ~/.config/sxhkd/sxhkdrc"
+alias b="nvim ~/.config/bspwm/bspwmrc"
 alias rm="rm -rf"
 alias w="wal -q -i ~/wallpapers/"
 alias reloj="tty-clock -c -C 4"
