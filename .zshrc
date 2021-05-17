@@ -46,8 +46,8 @@ alias w="wal -q -i ~/wallpapers/"
 alias reloj="tty-clock -c -C 4"
 
 # pacman and yay
-alias pacsyu='sudo pacman -Syyu'                 # update only standard pkgs
-alias yaysyu='yay -Syu --noconfirm'              # update standard pkgs and AUR pkgs (yay)
+alias pacsu='sudo pacman -Syyu'                 # update only standard pkgs
+alias yaysu='yay -Syu --noconfirm'              # update standard pkgs and AUR pkgs (yay)
 alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'  # remove orphaned packages
 alias cleanyay="yay -Sc --aur"
