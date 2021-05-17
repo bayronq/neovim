@@ -35,8 +35,8 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias rz='source ~/.zshrc'
 alias servicios='sudo systemctl list-unit-files --state=enabled'
 alias peso='du -sh * .[A-z0-9]* | sort -n'
-alias cat="bat"
-alias catn="/bin/cat"
+#alias cat="bat"
+#alias catn="/bin/cat"
 alias v="nvim"
 alias z="nvim ~/.zshrc"
 alias s="nvim ~/.config/sxhkd/sxhkdrc"
