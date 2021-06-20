@@ -7,9 +7,8 @@ export JAVA_HOME=/opt/java/jdk
 export PATH=$JAVA_HOME/bin:$PATH
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+ZSH_THEME="cloud"
 #ZSH_THEME="alanpeabody"
-
 
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -20,7 +19,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #source /usr/share/oh-my-zsh/oh-my-zsh.sh
 #source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 
 # export LANG=en_US.UTF-8
 
@@ -44,8 +42,6 @@ alias b="nvim ~/.config/bspwm/bspwmrc"
 alias rm="rm -rf"
 alias w="wal -q -i ~/wallpapers/"
 alias reloj="tty-clock -c -C 4"
-
-# pacman and yay
 alias pacsu='sudo pacman -Syyu'                 # update only standard pkgs
 alias yaysu='yay -Syu --noconfirm'              # update standard pkgs and AUR pkgs (yay)
 alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
