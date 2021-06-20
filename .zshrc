@@ -66,8 +66,8 @@ extract (){
 alias rz='source ~/.zshrc'
 alias servicios='sudo systemctl list-unit-files --state=enabled'
 alias peso='du -sh * .[A-z0-9]* | sort -n'
-alias v="sudo nvim"
-alias z="nvim ~/.zshrc"
+alias v="nvim"
+alias z="sudo nvim ~/.zshrc"
 alias rm="rm -rf"
 
 # Arch
