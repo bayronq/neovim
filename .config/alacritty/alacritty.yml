@@ -3,7 +3,6 @@ colors:
   primary:
     background: '0x282a36'
     foreground: '0xf8f8f2'
-    background_opacity: 1.0
 
   normal:
     black:   '0x000000'
@@ -79,7 +78,8 @@ font:
                 # family: SpaceMono NF
                 style: Italic
 
-        size: 15
+        size: 17
+        ligatures: true
         offset: 
                 x: 0
                 y: 0
@@ -90,6 +90,8 @@ window:
                 y: 2
 
 cursor:
+    style:
+            blinking: always
     text: CellBackground
     cursor: CellForeground
 vi_mode_cursor:
