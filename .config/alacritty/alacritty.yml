@@ -41,7 +41,7 @@ font:
                 # family: "Hack Nerd Font"
                 # family: UbuntuMono Nerd Font
                 # family: mononoki Nerd Font
-                family: agave Nerd Font
+                #family: agave Nerd Font
                 # family: Caskaydia Cove Nerd Font
                 # family: JetBrains Mono Medium Nerd Font
                 # family: Hurmit Nerd Font Mono
@@ -49,14 +49,15 @@ font:
                 # family: Iosevka NF
                 # family: Hack NF
                 # family: SpaceMono NF
-                #style: Regular
+                family: MesloLGS NF
+                style: Regular
 
         bold:
                 # family: "Hack Nerd Font"
                 # family: UbuntuMono Nerd Font
                 # family: mononoki Nerd Font
-                family: agave Nerd Font
-                # family: Caskaydia Cove Nerd Font
+                #family: agave Nerd Font
+                family: MesloLGS NF
                 # family: JetBrains Mono ExtraBold Nerd Font 
                 # family: Hurmit Nerd Font Mono
                 # family: DaddyTimeMono Nerd Font
@@ -68,7 +69,8 @@ font:
         italic:
                 # family: UbuntuMono Nerd Font
                 # family: mononoki Nerd Font
-                family: agave Nerd Font
+                #family: agave Nerd Font
+                family: MesloLGS NF
                 # family: Caskaydia Cove Nerd Font
                 # family: JetBrains Mono Medium Nerd Font
                 # family: Hurmit Nerd Font Mono
@@ -78,7 +80,7 @@ font:
                 # family: SpaceMono NF
                 style: Italic
 
-        size: 17
+        size: 16
         ligatures: true
         offset: 
                 x: 0
