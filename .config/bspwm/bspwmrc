@@ -7,7 +7,7 @@ light-locker &
 dunst &
 nitrogen --restore 
 bash ~/.config/polybar/forest/launch.sh &
-#bash ~/.config/polybar/launch.sh --forest &
+#bash ~/.config/polybar/savitar/launch.sh &
 #xrandr -s 1920x1200 &
 xrandr --auto
 #picom -f &
@@ -19,13 +19,14 @@ bspc monitor -d I II III IV V
 #bspc config border_radius                8
 
 bspc config border_width        2 
-bspc config window_gap          12
+bspc config window_gap          9 
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.55
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a firefox desktop='^2'
+bspc rule -a thunar desktop='^3'
 bspc rule -a Spotify desktop='^5'
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
